@@ -23,7 +23,7 @@ const topbarItems =[
         route: "/problems"
     }, {
         title: "Leaderboard",
-        route: "/leaderboar"
+        route: "/leaderboard"
     }
 ]
 function NavBar() {

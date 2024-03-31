@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { About } from "./components/About";
 import { Landing } from "./components/Landing";
 import { Submissions } from "./components/Sumissions";
+import { Leaderboard } from "./components/LeaderBoard";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAjjsbl9eSDWSmfrWpFPap2uGuwONZ2N4g",
@@ -41,6 +42,22 @@ function StoreApp() {
     { id: "3", problemName: "Palindrome Check", tags: ["String"] },
     { id: "4", problemName: "Merge Intervals", tags: ["Array", "Sorting"] },
   ];
+
+  const leaderboardData = [
+    {image:"", name:"Vishal", points: 100, id:"1"},
+    {image:"", name:"Shiv", points: 90, id:"2"},
+    {image:"", name:"Faisal", points: 80, id:"3"},
+  ]
+
+  const topPerformer = (leaderboardData : Array<string>) => {
+    let maxPointArr : any = leaderboardData[0];
+    for(let i =1 ; i< leaderboardData.length; i++){
+      if(leaderboardData[i] > maxPointArr){
+        maxPointArr = leaderboardData[i];
+      }
+    }
+    return maxPointArr.name;
+  }
 
   useEffect(() => {
     onAuthStateChanged(auth, function (user) {
@@ -79,10 +96,9 @@ function StoreApp() {
             <Route path="/about" element={<About />} />
             <Route path="/activity" element={<Submissions />} />
             <Route path="/problems" element={<ProblemList problemList={problemList} />} />
+            <Route path="/leaderboard" element={<Leaderboard leaderboard={leaderboardData} topPerformer = {topPerformer}/>} />
           </Routes>
         </Router>
-        {/* <Leaderboard /> */}
-        {/* <Leaderboard leaderboard={leaderboardData} /> */}
       </div>
     </div>
   );

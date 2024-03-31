@@ -2,11 +2,14 @@
 
 export const Leaderboard = ({
   leaderboard,
+  topPerformer
 }: {
   leaderboard: { image: string; name: string; points: number; id: string }[];
+  topPerformer: any;
 }) => {
   return (
     <div className="my-8">
+      <h1 className="text-bold text-4xl">Top Performer: {topPerformer(leaderboard)}</h1>
       <h1 className="text-bold text-4xl">Leaderboards</h1>
       <div className="shadow-md my-4 mih-h-[50vh] px-4 py-4">
         <div className="flex my-8">
